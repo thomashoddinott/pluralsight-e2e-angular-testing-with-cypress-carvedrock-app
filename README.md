@@ -1,27 +1,42 @@
-# CarvedrockApp
+## Introducing Cypress
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+**What is Cypress?**
 
-## Development server
+... (watch beginning again)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**End-to-end Testing** 
 
-## Code scaffolding
+==> A type of testing in which business processes are tested from start to finish under production-like circumstances
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Login Example** (Canonical e2e testing example)
 
-## Build
+We have our login page, and all the stuff behind the scenes (3rd party id provider, auth middleware, etc), and e2e just verifies that "everything worked". That's contrasted to unit testing, which tests us what specifically worked.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+UI testing = e2e testing
 
-## Running unit tests
+## Trade-offs
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Permanent**
 
-## Running end-to-end tests
+- Not used to index web pages, perform performance testing, or to script 3rd part sites
+- Communication with BE like server or DB is limited
+- There is no multi-tab support
+- Doesn't support multiple browsers open at the same time
+- Tests are limited to the same origin
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Temporary**
 
-## Further help
+- Workaround required for `cy.hover()` command - https://docs.cypress.io/api/commands/hover
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+See docs for more
+
+## Demo
+
+Use `data-cy` attributes in html specifically for Cypress tests
+
+
+
+
+
+
+

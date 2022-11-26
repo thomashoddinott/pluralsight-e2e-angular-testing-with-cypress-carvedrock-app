@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, DoBootstrap, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +38,14 @@ import { TransformArrayForGrid } from './pipes/TransformArrayForGrid';
     FontAwesomeModule,
     HttpClientModule
   ],
-  providers: [ NgbActiveModal ],
-  bootstrap: [ AppComponent ]
+  providers: [NgbActiveModal]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    appRef.bootstrap(AppComponent)
+
+    if (window.Cypress) {
+      window.appRef = appRef;
+    }
+  }
+}

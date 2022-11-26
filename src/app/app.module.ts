@@ -17,6 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommentModalComponent } from './components/comment-modal/comment-modal.component';
 import { TransformArrayForGrid } from './pipes/TransformArrayForGrid';
 
+declare global {
+  interface Window {
+    appRef: ApplicationRef,
+    Cypress: any
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,

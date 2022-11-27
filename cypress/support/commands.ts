@@ -45,6 +45,8 @@
 declare namespace Cypress {
   interface Chainable {
     filterAdventure(text: string): void;
+    createAdventure(id: number, title: string): void;
+    deleteAdventure(id: number): void
   }
 }
 
@@ -55,3 +57,38 @@ Cypress.Commands.add('filterAdventure', (text: string): void => {
     cy.wrap(window).its('appRef').invoke('tick');
   });
 });
+
+Cypress.Commands.add('createAdventure', (id: number, title: string): void => {
+  cy.request(
+    'POST',
+    'http://localhost:3000/adventures',
+    {
+      "id": id,
+      "title": title,
+      "image": "../../assets/adventure-images/carved-rock-img-6.jpg",
+      "description": "Climbing Breithorn you will receive views that are remarkable. There is so much to see, including, the Matterhorn (4,478m), the Gendarm (4,106m), Monte Rosa (4,634m), the Roccia Nera (4,075m), among several more peaks and glaciers.",
+      "level": "Beginner",
+      "duration": "1 day",
+      "mountainRange": "Alps",
+      "numberOfParticipants": "3-6",
+      "availability": "September",
+      "defaultCommentsLength": 1,
+      "comments": [
+        {
+          "name": "Tom",
+          "comment": "If there is a majestic view, it must be from here!"
+        },
+        {
+          "name": "Josh",
+          "comment": "What a great adventure!"
+        }
+      ]
+    },
+  )
+})
+
+Cypress.Commands.add('deleteAdventure', (id: number): void => {
+  cy.request(
+    'DELETE',
+    `http://localhost:3000/adventures/${id}`)
+})

@@ -1,4 +1,4 @@
-Todo: [Course link]()
+Todo: [Course link](https://app.pluralsight.com/library/courses/angular-end-to-end-testing-cypress/table-of-contents)
 
 ## Introducing Cypress
 
